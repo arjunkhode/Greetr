@@ -1,4 +1,4 @@
-(
+;(
 function(global,$){
 
 	var Greetr = function(firstname, lastname, language){
@@ -63,6 +63,24 @@ function(global,$){
 			this.language = lang;
 			this.validate();
 			return this;
+		},
+
+		HTMLGreeting: function(){
+			if(!$){
+				throw "jQuery not loaded";
+			}
+			if(!selector){
+				throw "Missing jquery selector";
+			}
+			var msg;
+			if (formal){
+				msg = this.formalGreeting();		
+			}
+			else{
+				msg = this.greeting();
+			}
+			$(selector).html(msg);
+			return this;
 		}
 	};
 
@@ -71,6 +89,8 @@ function(global,$){
 	self.firstname = firstname || 'Default firstname';
 	self.lastname = lastname || 'Default lastname';
 	self.language = language || 'en';
+
+	self.validate();
 };
 
 	Greetr.init.prototype = Greetr.prototype;
