@@ -65,7 +65,7 @@ function(global,$){
 			return this;
 		},
 
-		HTMLGreeting: function(){
+		HTMLGreeting: function(selector, formal){
 			if(!$){
 				throw "jQuery not loaded";
 			}
